@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Button2 from "./components/MyButton";
+import PopoverDemo from "./components/radixui";
+import DialogDemo from "./components/radixui/DialogDemo";
+import VideoConverterTabs from "./components/radixui/VideoConverterTabs";
 
 function MyH1() {
   return (
@@ -57,6 +60,12 @@ export default function Home() {
           <MyParam param="这个是奔驰E300" />
 
           <Button2 />
+
+          <PopoverDemo />
+
+          <DialogDemo />
+
+          <VideoConverterTabs />
 
           <MyH1 />
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
