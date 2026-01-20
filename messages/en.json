@@ -1,4 +1,11 @@
 {
   "greeting": "Hello, welcome to next-intl!",
-  "button": "Switch to Chinese"
+  "button": "Switch to Chinese",
+  "home": "Home",
+  "profile": "Profile",
+  "HomePage": {
+    
+    "title": "Welcome to the Home Page"
+  }
+
 }

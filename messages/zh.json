@@ -1,4 +1,10 @@
 {
   "greeting": "你好，欢迎使用 next-intl！",
-  "button": "切换到英文"
+  "button": "切换到英文",
+  "home": "首页",
+  "profile": "个人中心",
+  "HomePage": {
+    
+    "title": "欢迎来到首页"
+  }
 }

@@ -7,18 +7,29 @@
 
 // export default nextConfig;
 
-// next.config.js
-const withNextIntl = require('next-intl/plugin')('./next-intl.config.js');
+
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/app/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 你的其他 Next.js 配置（如 reactCompiler、images 等）
-  reactCompiler: true,
-  poweredByHeader: false
-};
+const nextConfig = {};
 
-// 合并配置并导出（核心：让 next-intl 生效）
-module.exports = withNextIntl(nextConfig);
+export default withNextIntl(nextConfig);
+
+
+// // next.config.js
+// const withNextIntl = require('next-intl/plugin')('./next-intl.config.js');
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   // 你的其他 Next.js 配置（如 reactCompiler、images 等）
+//   reactCompiler: true,
+//   poweredByHeader: false
+// };
+
+// // 合并配置并导出（核心：让 next-intl 生效）
+// module.exports = withNextIntl(nextConfig);
 
 
 
