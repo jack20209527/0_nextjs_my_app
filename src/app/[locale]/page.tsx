@@ -1,5 +1,7 @@
 import {setRequestLocale, getTranslations} from 'next-intl/server';
-import {Link} from '../i18n/routing'; // 必须用自己定义的这个 Link
+import {Link} from '../i18n/routing';
+import {auth} from '@/auth'; // 导出 auth 实例
+import AuthButton from '@/components/AuthButton'; // 客户端组件
 
 export default async function HomePage({
   params
@@ -15,6 +17,9 @@ export default async function HomePage({
   const t = await getTranslations('HomePage');
   const tGlobal = await getTranslations();
 
+  // 获取当前 session
+  const session = await auth();
+
   return (
     <div style={{padding: '2rem', textAlign: 'center'}}>
       <h1 style={{fontSize: '2rem', marginBottom: '1rem'}}>
@@ -24,6 +29,36 @@ export default async function HomePage({
       <p style={{fontSize: '1.2rem', marginBottom: '2rem'}}>
         {tGlobal('greeting')}
       </p>
+
+      {/* 显示用户信息或登录按钮 */}
+      <div style={{marginBottom: '2rem', padding: '1rem', background: session ? '#d4edda' : '#f8d7da', borderRadius: '8px'}}>
+        {session ? (
+          <div>
+            <p style={{margin: '0 0 1rem 0', fontSize: '1.1rem'}}>
+              ✅ 已登录: <strong>{session.user?.name}</strong> ({session.user?.email})
+            </p>
+            <AuthButton />
+          </div>
+        ) : (
+          <div>
+            <p style={{margin: '0 0 1rem 0'}}>❌ 未登录</p>
+            <Link
+              href="/auth/signin"
+              style={{
+                display: 'inline-block',
+                padding: '0.5rem 1.5rem',
+                background: '#0070f3',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              去登录
+            </Link>
+          </div>
+        )}
+      </div>
 
       <nav style={{display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem'}}>
         <a href="#" style={{margin: '0 1rem', textDecoration: 'none', color: '#0070f3'}}>
