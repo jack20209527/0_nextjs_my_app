@@ -10,15 +10,7 @@ export default function AuthButton() {
   return (
     <button
       onClick={handleLogout}
-      style={{
-        padding: '0.5rem 1.5rem',
-        background: '#dc3545',
-        color: 'white',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        fontSize: '1rem'
-      }}
+      className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
     >
       退出登录
     </button>

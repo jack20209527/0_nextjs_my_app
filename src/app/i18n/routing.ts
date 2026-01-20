@@ -5,7 +5,7 @@ export const routing = defineRouting({
   locales: ['zh', 'en'],
   defaultLocale: 'zh',
   // 强制在 URL 中显示语言前缀（解决 requestLocale 为 undefined 的问题）
-  localePrefix: 'always'
+  // localePrefix: 'always'
 });
 
 // 导出封装好的工具，以后页面跳转都用这里的 Link

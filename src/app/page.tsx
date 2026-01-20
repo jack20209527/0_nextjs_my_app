@@ -3,8 +3,19 @@ import Button2 from "./components/MyButton";
 import PopoverDemo from "./components/radixui";
 import DialogDemo from "./components/radixui/DialogDemo";
 import VideoConverterTabs from "./components/radixui/VideoConverterTabs";
+import {auth} from '@/auth'; // 导出 auth 实例
 
-function MyH1() {
+async function MyH1() {
+
+    // 获取当前 session
+  const session = await auth();
+  console.log('当前 session:', session);
+
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id)
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.name)
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id ? "已登录" : "未登录");
+
+
   return (
     <div>
 

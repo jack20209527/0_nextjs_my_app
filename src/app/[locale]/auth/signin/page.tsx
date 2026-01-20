@@ -37,62 +37,57 @@ export default function SignInPage() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "4rem auto", padding: "2rem", border: "1px solid #ddd", borderRadius: "8px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>登录</h1>
+    <div className="max-w-md mx-4 mt-16 p-8 border border-gray-300 rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold text-center mb-8">登录</h1>
 
       {error && (
-        <div style={{ padding: "0.75rem", background: "#fee", color: "#c33", marginBottom: "1rem", borderRadius: "4px" }}>
+        <div className="p-3 mb-4 bg-red-100 text-red-700 rounded">
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "1rem" }}>
-          <label style={{ display: "block", marginBottom: "0.5rem" }}>用户名</label>
+        <div className="mb-4">
+          <label className="block mb-2 text-gray-700">用户名</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="输入 admin"
             required
-            style={{ width: "100%", padding: "0.5rem", border: "1px solid #ddd", borderRadius: "4px" }}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
-          <label style={{ display: "block", marginBottom: "0.5rem" }}>密码</label>
+        <div className="mb-4">
+          <label className="block mb-2 text-gray-700">密码</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="输入 123456"
             required
-            style={{ width: "100%", padding: "0.5rem", border: "1px solid #ddd", borderRadius: "4px" }}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            background: loading ? "#ccc" : "#0070f3",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: loading ? "not-allowed" : "pointer",
-            fontSize: "1rem"
-          }}
+          className={`w-full py-3 text-white rounded font-medium transition-colors ${
+            loading
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
         >
           {loading ? "登录中..." : "登录"}
         </button>
       </form>
 
-      <div style={{ marginTop: "1.5rem", padding: "1rem", background: "#f5f5f5", borderRadius: "4px", fontSize: "0.875rem" }}>
-        <p style={{ margin: "0 0 0.5rem 0", fontWeight: "bold" }}>测试账号：</p>
-        <p style={{ margin: "0" }}>用户名: <strong>admin</strong></p>
-        <p style={{ margin: "0" }}>密码: <strong>123456</strong></p>
+      <div className="mt-6 p-4 bg-gray-100 rounded text-sm">
+        <p className="mb-2 font-bold">测试账号：</p>
+        <p className="m-0">用户名: <strong>admin</strong></p>
+        <p className="m-0">密码: <strong>123456</strong></p>
       </div>
     </div>
   );

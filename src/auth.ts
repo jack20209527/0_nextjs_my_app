@@ -9,6 +9,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         username: { label: "用户名", type: "text" },
         password: { label: "密码", type: "password" }
       },
+      
       async authorize(credentials) {
         // 简单的硬编码验证（实际项目中应该查数据库）
         if (credentials?.username === "admin" && credentials?.password === "123456") {

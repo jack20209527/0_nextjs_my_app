@@ -5,6 +5,8 @@ import {notFound} from 'next/navigation';
 import {routing} from '../i18n/routing';
 import SessionProvider from '@/components/SessionProvider';
 
+import {auth} from '@/auth'; // 导出 auth 实例
+
 export default async function LocaleLayout({
   children,
   params
@@ -17,6 +19,15 @@ export default async function LocaleLayout({
   console.log('1. params 原始值:', params);
   console.log('2. layout.tsx -> 获取的locale:', locale);
   console.log('3. routing.locales:', routing.locales);
+
+
+  // 获取当前 session
+  const session = await auth();
+  console.log('当前 session:', session);
+
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id)
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.name)
+  console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id ? "已登录" : "未登录");
 
   // 验证参数中的 locale 是否在支持列表中
   if (!routing.locales.includes(locale as any)) {

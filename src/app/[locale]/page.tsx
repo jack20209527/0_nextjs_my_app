@@ -21,38 +21,30 @@ export default async function HomePage({
   const session = await auth();
 
   return (
-    <div style={{padding: '2rem', textAlign: 'center'}}>
-      <h1 style={{fontSize: '2rem', marginBottom: '1rem'}}>
+    <div className="p-8 text-center">
+      <h1 className="text-4xl mb-4">
         {t('title')}
       </h1>
 
-      <p style={{fontSize: '1.2rem', marginBottom: '2rem'}}>
+      <p className="text-xl mb-8">
         {tGlobal('greeting')}
       </p>
 
       {/* 显示用户信息或登录按钮 */}
-      <div style={{marginBottom: '2rem', padding: '1rem', background: session ? '#d4edda' : '#f8d7da', borderRadius: '8px'}}>
+      <div className={`mb-8 p-4 rounded-lg ${session ? 'bg-green-100' : 'bg-red-100'}`}>
         {session ? (
           <div>
-            <p style={{margin: '0 0 1rem 0', fontSize: '1.1rem'}}>
+            <p className="mb-4 text-lg">
               ✅ 已登录: <strong>{session.user?.name}</strong> ({session.user?.email})
             </p>
             <AuthButton />
           </div>
         ) : (
           <div>
-            <p style={{margin: '0 0 1rem 0'}}>❌ 未登录</p>
+            <p className="mb-4">❌ 未登录</p>
             <Link
               href="/auth/signin"
-              style={{
-                display: 'inline-block',
-                padding: '0.5rem 1.5rem',
-                background: '#0070f3',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer'
-              }}
+              className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
             >
               去登录
             </Link>
@@ -60,50 +52,44 @@ export default async function HomePage({
         )}
       </div>
 
-      <nav style={{display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem'}}>
-        <a href="#" style={{margin: '0 1rem', textDecoration: 'none', color: '#0070f3'}}>
+      <nav className="flex gap-4 justify-center mt-8">
+        <a href="#" className="mx-4 text-blue-600 hover:underline">
           {tGlobal('home')}
         </a>
-        <a href="#" style={{margin: '0 1rem', textDecoration: 'none', color: '#0070f3'}}>
+        <a href="#" className="mx-4 text-blue-600 hover:underline">
           {tGlobal('profile')}
         </a>
       </nav>
 
-      <div style={{marginTop: '2rem', padding: '1rem', background: '#f5f5f5', borderRadius: '8px'}}>
-        <p style={{marginBottom: '1rem'}}>切换语言 / Switch Language:</p>
-        <div style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
+      <div className="mt-8 p-4 bg-gray-100 rounded-lg">
+        <p className="mb-4">切换语言 / Switch Language:</p>
+        <div className="flex gap-2 justify-center">
           <Link
             href="/"
             locale="en"
-            style={{
-              padding: '0.5rem 1rem',
-              background: locale === 'en' ? '#0070f3' : '#e0e0e0',
-              color: locale === 'en' ? 'white' : '#333',
-              textDecoration: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className={`px-4 py-2 rounded transition-colors ${
+              locale === 'en'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+            }`}
           >
             English
           </Link>
           <Link
             href="/"
             locale="zh"
-            style={{
-              padding: '0.5rem 1rem',
-              background: locale === 'zh' ? '#0070f3' : '#e0e0e0',
-              color: locale === 'zh' ? 'white' : '#333',
-              textDecoration: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className={`px-4 py-2 rounded transition-colors ${
+              locale === 'zh'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+            }`}
           >
             中文
           </Link>
         </div>
       </div>
 
-      <p style={{marginTop: '1rem', color: '#666', fontSize: '0.9rem'}}>
+      <p className="mt-4 text-gray-600 text-sm">
         当前语言 / Current locale: {locale}
       </p>
     </div>

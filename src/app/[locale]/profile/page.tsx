@@ -1,10 +1,20 @@
 // app/[locale]/profile/page.tsx
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+// import {auth} from '@/auth'; // 导出 auth 实例
 
-export default function Profile({ params: { locale } }: { params: { locale: string } }) {
+export default async function Profile({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations();
   const targetLocale = locale === 'zh' ? 'en' : 'zh';
+
+    // 获取当前 session
+  // const session = await auth();
+  // console.log('当前 session:', session);
+
+  // console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id)
+  // console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.name)
+  // console.log('app->LocaleLayout -> 获取的登录信息: ', session?.user?.id ? "已登录" : "未登录");
+
 
   return (
     <div style={{ padding: '2rem', textAlign: 'center' }}>
