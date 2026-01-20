@@ -5,6 +5,8 @@ import {notFound} from 'next/navigation';
 import {routing} from '../i18n/routing';
 import SessionProvider from '@/components/SessionProvider';
 
+import {AppContextProvider} from '@/contexts/AppContext';
+
 import {auth} from '@/auth'; // 导出 auth 实例
 
 export default async function LocaleLayout({
@@ -51,11 +53,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <SessionProvider>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </SessionProvider>
+        <AppContextProvider>
+          <SessionProvider>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </SessionProvider>
+        </AppContextProvider>
       </body>
     </html>
   );

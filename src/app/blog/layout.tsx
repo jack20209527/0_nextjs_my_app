@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {auth} from '@/auth'; // 导出 auth 实例
+import {AppContextProvider} from '@/contexts/AppContext';
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
@@ -14,7 +15,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 
   return (
+      <AppContextProvider>
 
+      
         <div className="bg-green-400">
             这个是嵌套的Blog的子Layout: {children}
 
@@ -23,6 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Link href="/blog/newblog2">博客新页面2</Link>
             
         </div>
+        </AppContextProvider>
 
   );
 }

@@ -1,7 +1,8 @@
 import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {Link} from '../i18n/routing';
-import {auth} from '@/auth'; // 导出 auth 实例
-import AuthButton from '@/components/AuthButton'; // 客户端组件
+import {auth} from '@/auth';
+import AuthButton from '@/components/AuthButton';
+import ContextDemo from '@/components/ContextDemo';
 
 export default async function HomePage({
   params
@@ -29,6 +30,9 @@ export default async function HomePage({
       <p className="text-xl mb-8">
         {tGlobal('greeting')}
       </p>
+
+      {/* Context Demo 演示组件 */}
+      <ContextDemo />
 
       {/* 显示用户信息或登录按钮 */}
       <div className={`mb-8 p-4 rounded-lg ${session ? 'bg-green-100' : 'bg-red-100'}`}>
