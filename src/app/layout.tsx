@@ -22,16 +22,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`antialiased`}
-      >
-        <div className=" bg-blue-400 p-10">
-            {children}
-        </div>
-        
-      </body>
-    </html>
-  );
+  // 不渲染 html 和 body，只返回 children
+  // 因为 src/app/[locale]/layout.tsx 已经有 html 和 body 了
+  return <>{children}</>;
 }
