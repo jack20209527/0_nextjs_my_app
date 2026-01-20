@@ -2,11 +2,22 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 // import {auth} from '@/auth'; // 导出 auth 实例
+import { useAppContext } from '@/contexts/AppContext';
+
 
 export default async function Profile({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations();
   const targetLocale = locale === 'zh' ? 'en' : 'zh';
 
+  const { theme, toggleTheme, count, increment } = useAppContext();
+
+  console.log('当前的系统样式 theme:', theme);
+  console.log('当前的数值 count:', count);
+
+
+  
+
+  
     // 获取当前 session
   // const session = await auth();
   // console.log('当前 session:', session);

@@ -34,6 +34,14 @@ export default async function HomePage({
       {/* Context Demo 演示组件 */}
       <ContextDemo />
 
+      {/* 测试 Context 跨页面共享 */}
+      <div className="mb-8 p-4 bg-yellow-100 rounded-lg">
+        <p className="text-sm text-gray-700 mb-2">测试 Context 跨页面共享：</p>
+        <Link href="/comp" className="text-blue-600 hover:underline">
+          跳转到 /comp 页面（应该保持主题和计数）
+        </Link>
+      </div>
+
       {/* 显示用户信息或登录按钮 */}
       <div className={`mb-8 p-4 rounded-lg ${session ? 'bg-green-100' : 'bg-red-100'}`}>
         {session ? (
