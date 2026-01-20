@@ -1,11 +1,25 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+// const nextConfig: NextConfig = {
+//   /* config options here */
+//   reactCompiler: true,
+// };
+
+// export default nextConfig;
+
+// next.config.js
+const withNextIntl = require('next-intl/plugin')('./next-intl.config.js');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // 你的其他 Next.js 配置（如 reactCompiler、images 等）
   reactCompiler: true,
+  poweredByHeader: false
 };
 
-export default nextConfig;
+// 合并配置并导出（核心：让 next-intl 生效）
+module.exports = withNextIntl(nextConfig);
+
 
 
 // // next.config.js（根目录下，已重命名完成）
