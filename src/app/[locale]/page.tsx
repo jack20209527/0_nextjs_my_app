@@ -3,6 +3,7 @@ import {Link} from '../i18n/routing';
 import {auth} from '@/auth';
 import AuthButton from '@/components/AuthButton';
 import ContextDemo from '@/components/ContextDemo';
+import UserInfo from '@/components/UserInfo';
 
 export default async function HomePage({
   params
@@ -33,6 +34,15 @@ export default async function HomePage({
 
       {/* Context Demo 演示组件 */}
       <ContextDemo />
+
+      {/* BetterAuth 演示 */}
+      <div className="mb-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4">🔐 BetterAuth Demo</h2>
+        <p className="text-sm text-gray-600 mb-4">
+          BetterAuth 是一个轻量级的认证库，支持多种登录方式
+        </p>
+        <UserInfo />
+      </div>
 
       {/* 测试 Context 跨页面共享 */}
       <div className="mb-8 p-4 bg-yellow-100 rounded-lg">
